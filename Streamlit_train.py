@@ -51,7 +51,7 @@ with open('best_model.sav', 'rb') as f:
     model_loaded = pickle.load(f)
 
 # predict to customer data
-target = int(model_loaded.predict(data_customer)[0]) # target 1 atau 0
+target = model_loaded.predict(data_customer) # target 1 atau 0
 probability = model_loaded.predict_proba(data_customer)[0]  # probabilitas [p0, p1]
 
 # menampilkan hasil prediksi
@@ -64,6 +64,7 @@ with col2:
         st.write('This customer will Not Survive')
     # display probability
     st.write(f'Probability survive:{probability[1]:.2f}')
+
 
 
 
